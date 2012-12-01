@@ -1,6 +1,5 @@
-INSTALL.txt
-LICENSE.txt
-README.txt
-demos/
-extras/documentation
+Thumbs.db
+logs/*
+smarty/cache/*
+smarty/compiled/*
 
