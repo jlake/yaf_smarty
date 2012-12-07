@@ -25,11 +25,17 @@ class Bootstrap extends Yaf_Bootstrap_Abstract
             if(isset($dbConf->port)) {
                 $dsn .= ';port='.$dbConf->port;
             }
+            if(isset($dbConf->charset)) {
+                $dsn .= ';charset='.$dbConf->charset;
+            }
             $db = new Db_EasyPDO($dsn, $dbConf->username, $dbConf->password);
         } elseif($dbConf->adapter == 'PDO_PGSQL') {
             $dsn = 'pgsql:dbname='.$dbConf->dbname.' host='.$dbConf->host;
             if(isset($dbConf->port)) {
                 $dsn .= ' port='.$dbConf->port;
+            }
+            if(isset($dbConf->charset)) {
+                $dsn .= ' charset='.$dbConf->charset;
             }
             $db = new Db_EasyPDO($dsn, $dbConf->username, $dbConf->password);
         } elseif($dbConf->adapter == 'PDO_SQLITE') {
