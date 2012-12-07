@@ -1,7 +1,9 @@
 <?php
-class ErrorController extends Yaf_Controller_Abstract {
+class ErrorController extends Yaf_Controller_Abstract
+{
 
-    public function errorAction() {
+    public function errorAction()
+    {
         $exception = $this->getRequest()->getParam('exception');
 
         $this->_view->message = $exception->getMessage();
@@ -18,12 +20,14 @@ class ErrorController extends Yaf_Controller_Abstract {
         endswitch;
     }
 
-    private function _pageNotFound() {
+    private function _pageNotFound()
+    {
         $this->getResponse()->setHeader('HTTP/1.0 404 Not Found');
         $this->_view->error = 'Page was not found';
     }
 
-    private function _unknownError() {
+    private function _unknownError()
+    {
         $this->getResponse()->setHeader('HTTP/1.0 500 Internal Server Error');
         $this->_view->error = 'Application Error';
     }
