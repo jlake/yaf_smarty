@@ -63,7 +63,7 @@ class Db_EasyPDO extends PDO
     public function run($sql, $bind = array())
     {
         $stmt = $this->_prepare($sql, $bind);
-        return $this->exec($stmt);
+        return $stmt->rowCount();
     }
 
     /**
