@@ -267,4 +267,25 @@ class Db_EasyPDO extends PDO
         $stmt = $this->_prepare($sql, $bind);
         return $stmt->fetchAll(PDO::FETCH_KEY_PAIR);
     }
+
+    /**
+     * Execute sql and returns an values array of first column
+     *
+     * @param  string  $sql    SQL statement
+     * @param  array   $bind A single value or an array of values
+     * @return array   Result rows
+     */
+    public function fetchCol($sql, $bind = array())
+    {
+        $stmt = $this->_prepare($sql, $bind);
+        $records = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $result = array();
+        if(!empty($records)) {
+            $k0 = key($records[0]);
+            foreach($records as $rec) {
+                $result[] = $rec[$k0];
+            }
+        }
+        return $result;
+    }
 }
