@@ -85,7 +85,7 @@ class Db_EasyPDO extends PDO
      * @param  array   $andOr  AND or OR
      * @return string  where string
      */
-    public static function whereExpr($where, $andOr = 'AND')
+    public function where($where, $andOr = 'AND')
     {
         if(is_array($where)) {
             $tmp = array();
@@ -110,7 +110,7 @@ class Db_EasyPDO extends PDO
     {
         $sql = "SELECT " . $fields . " FROM " . $table;
         if(!empty($where)) {
-            $where = self::whereExpr($where);
+            $where = $this->where($where);
             $sql .= " WHERE " . $where;
         }
         $stmt = $this->_prepare($sql, $bind);
@@ -141,19 +141,19 @@ class Db_EasyPDO extends PDO
      * @param  string $table  table name
      * @param  array  $data  An array of values
      * @param  string $where  where string
-     * @param  array  $bind  Parameters. A single value or an array of values
      * @return array
      */
-    public function update($table, $data, $where, $bind = array())
+    public function update($table, $data, $where)
     {
         $sql = "UPDATE " . $table . " SET ";
         $comma = '';
+        $bind = array();
         foreach($data as $k => $v) {
             $sql .= $comma . $k . " = :" . $k;
             $comma = ', ';
-            $bind[$k] = $data[$v];
+            $bind[$k] = $v;
         }
-        $where = self::whereExpr($where);
+        $where = $this->where($where);
         $sql .= " WHERE " . $where;
         return $this->run($sql, $bind);
     }
@@ -168,7 +168,7 @@ class Db_EasyPDO extends PDO
      */
     public function delete($table, $where, $bind = array())
     {
-        $where = self::whereExpr($where);
+        $where = $this->where($where);
         $sql = "DELETE FROM " . $table . " WHERE " . $where . ";";
         return $this->run($sql, $bind);
     }
@@ -185,8 +185,8 @@ class Db_EasyPDO extends PDO
     {
         $count = 0;
         if(!empty($where)) {
-            $where = self::whereExpr($where);
-            $count = $this->getOne("SELECT COUNT(1) FROM $table WHERE $where");
+            $where = $this->where($where);
+            $count = $this->fetchOne("SELECT COUNT(1) FROM $table WHERE $where");
         }
         if($count == 0) {
             return $this->insert($table, $data);
