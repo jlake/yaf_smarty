@@ -29,7 +29,7 @@ class Db_EasyPDO extends PDO
      * Prepare and returns a PDOStatement
      *
      * @param  string  $sql  SQL statement
-     * @param  array   $bind Parameters. A single value or an array of values
+     * @param  array   $bind parameters. A single value or an array of values
      * @return PDOStatement
      */
     private function _prepare($sql, $bind = array())
@@ -57,7 +57,7 @@ class Db_EasyPDO extends PDO
      * Should be used for query which doesn't return resultset
      *
      * @param  string  $sql   SQL statement
-     * @param  array   $bind  Parameters. A single value or an array of values
+     * @param  array   $bind  parameters. A single value or an array of values
      * @return integer Number of effected rows
      */
     public function run($sql, $bind = array())
@@ -101,17 +101,24 @@ class Db_EasyPDO extends PDO
      * select records from a table
      *
      * @param  string $table  table name
-     * @param  string $where  where string
-     * @param  array  $bind  Parameters. A single value or an array of values
      * @param  string $fields  fields list
+     * @param  string $where  where string
+     * @param  array  $bind  parameters. A single value or an array of values
+     * @param  string $limit  where string
      * @return array
      */
-    public function select($table, $where = "", $bind = array(), $fields = "*")
+    public function select($table, $fields = "*", $where = "", $bind = array(), $limit = NULL, $order = NULL)
     {
         $sql = "SELECT " . $fields . " FROM " . $table;
         if(!empty($where)) {
             $where = $this->where($where);
             $sql .= " WHERE " . $where;
+        }
+        if(!empty($limit)) {
+            $sql .= " LIMIT " . $limit;
+        }
+        if(!empty($order)) {
+            $sql .= " ORDER BY " . $order;
         }
         $stmt = $this->_prepare($sql, $bind);
         return $stmt->fetchAll($this->_fetchMode);
@@ -121,7 +128,7 @@ class Db_EasyPDO extends PDO
      * insert a record to a table
      *
      * @param  string $table  table name
-     * @param  array  $data  An array of values
+     * @param  array  $data  data array
      * @return array
      */
     public function insert($table, $data)
@@ -139,7 +146,7 @@ class Db_EasyPDO extends PDO
      * update records for one table
      *
      * @param  string $table  table name
-     * @param  array  $data  An array of values
+     * @param  array  $data  data array
      * @param  string $where  where string
      * @return array
      */
@@ -163,7 +170,7 @@ class Db_EasyPDO extends PDO
      *
      * @param  string $table  table name
      * @param  string $where  where string
-     * @param  array  $bind  Parameters. A single value or an array of values
+     * @param  array  $bind  parameters. A single value or an array of values
      * @return array
      */
     public function delete($table, $where, $bind = array())
