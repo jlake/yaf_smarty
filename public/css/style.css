@@ -8,8 +8,7 @@ body {
 }
 
 .btn-success {
-    background-color: #a90329;
-
+    background-color: #6d0019;
     background-image: -moz-linear-gradient(top, #a90329, #6d0019);
     background-image: -ms-linear-gradient(top, #a90329, #6d0019);
     background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#a90329), to(#6d0019));
@@ -24,7 +23,7 @@ body {
 .btn-success.active,
 .btn-success.disabled,
 .btn-success[disabled] {
-    background-color: #a90329;
+    background-color: #6d0019;
 }
 
 div.container a.brand {
