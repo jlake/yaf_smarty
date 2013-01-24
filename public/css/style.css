@@ -26,7 +26,14 @@ body {
 }
 
 .btn-success:active, .btn-success.active {
-    background-color: #57a900;
+    border:1px solid #450111;
+    background-color: #77021d;
+    background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#77021d), color-stop(100%, #3a000d));
+    background-image: -webkit-linear-gradient(top, #77021d, #3a000d);
+    background-image: -moz-linear-gradient(top, #77021d, #3a000d);
+    background-image: -ms-linear-gradient(top, #77021d, #3a000d);
+    background-image: -o-linear-gradient(top, #77021d, #3a000d);
+    background-image: linear-gradient(top, #77021d, #3a000d);filter:progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=#77021d, endColorstr=#3a000d);
 }
 
 div.container a.brand {
