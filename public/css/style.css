@@ -9,12 +9,14 @@ body {
 
 .btn-success {
     background-color: #a90329;
-    background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #a90329), color-stop(100%, #6d0019));
-    background-image: -webkit-linear-gradient(top, #a90329, #6d0019);
+
     background-image: -moz-linear-gradient(top, #a90329, #6d0019);
     background-image: -ms-linear-gradient(top, #a90329, #6d0019);
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#a90329), to(#6d0019));
+    background-image: -webkit-linear-gradient(top, #a90329, #6d0019);
     background-image: -o-linear-gradient(top, #a90329, #6d0019);
-    background-image: linear-gradient(top, #a90329, #6d0019);filter:progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=#a90329, endColorstr=#6d0019);
+    background-image: linear-gradient(top, #a90329, #6d0019);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#a90329', endColorstr='#6d0019', GradientType=0);
 }
 
 .btn-success:hover,
@@ -22,18 +24,7 @@ body {
 .btn-success.active,
 .btn-success.disabled,
 .btn-success[disabled] {
-    background-color: #57a900;
-}
-
-.btn-success:active, .btn-success.active {
-    border:1px solid #450111;
-    background-color: #77021d;
-    background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#77021d), color-stop(100%, #3a000d));
-    background-image: -webkit-linear-gradient(top, #77021d, #3a000d);
-    background-image: -moz-linear-gradient(top, #77021d, #3a000d);
-    background-image: -ms-linear-gradient(top, #77021d, #3a000d);
-    background-image: -o-linear-gradient(top, #77021d, #3a000d);
-    background-image: linear-gradient(top, #77021d, #3a000d);filter:progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=#77021d, endColorstr=#3a000d);
+    background-color: #a90329;
 }
 
 div.container a.brand {
