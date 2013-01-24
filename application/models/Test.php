@@ -3,6 +3,6 @@ class TestModel
 {
 	public function getMessage()
 	{
-		return "message from TestModel";
+		return "Message from TestModel";
 	}
 }
