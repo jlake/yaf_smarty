@@ -1,6 +1,28 @@
 {extends file='layout.phtml'}
 {block name=content}
     {$name}
-    <hr />
-    {$msg}
+    <div class="hero-unit">
+        <h1>Welcome to <span class="zf-green">Yaf Framework</span></h1>
+        <p>Congratulations! You have successfully installed the Yaf frameowrk.</p>
+        <p><a class="btn btn-success btn-large" href="http://www.yafdev.com/" target="_blank">Yaf Home Page &raquo;</a></p>
+    </div>
+
+    <div class="row">
+        <div class="span4">
+            <h2>Section 1</h2>
+            <p>{$msg1}</p>
+        </div>
+
+        <div class="span4">
+            <h2>Section 2</h2>
+            <p>{$msg2}</p>
+        </div>
+
+        <div class="span4">
+           <h2>Section 3</h2>
+           <p>Read the document</p>
+           <p><a class="btn btn-success" href="http://www.php.net/manual/en/book.yaf.php" target="_blank">Yaf document</a></p>
+        </div>
+    </div>
+    
 {/block}
