@@ -1,0 +1,12 @@
+{extends file='layout.phtml'}
+{block name=title}Error{/block}
+{block name=content}
+    <h1>{$error}</h1>
+    {if $message}
+        <pre>{$message}</pre>
+    {/if}
+    {if $trace}
+        <h1>Trace</h1>
+        <pre>{$trace}</pre>
+    {/if}
+{/block}
